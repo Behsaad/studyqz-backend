@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  facebookid: MyString
+  boosts: 1
+  jokers: 1
+  xp: 1
+  university_id: 
+  subject_id: 
+
+two:
+  facebookid: MyString
+  boosts: 1
+  jokers: 1
+  xp: 1
+  university_id: 
+  subject_id: 

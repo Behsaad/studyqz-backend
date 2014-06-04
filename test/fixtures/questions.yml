@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  course_id: 
+  question: MyString
+  answer1: MyString
+  answer2: MyString
+  answer3: MyString
+  answer1correct: false
+  answer2correct: false
+  answer3correct: false
+  explanation: MyString
+  linkurl: MyString
+  linkname: MyString
+  user_id: 
+
+two:
+  course_id: 
+  question: MyString
+  answer1: MyString
+  answer2: MyString
+  answer3: MyString
+  answer1correct: false
+  answer2correct: false
+  answer3correct: false
+  explanation: MyString
+  linkurl: MyString
+  linkname: MyString
+  user_id: 

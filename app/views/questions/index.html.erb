@@ -1,0 +1,49 @@
+<h1>Listing questions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Course</th>
+      <th>Question</th>
+      <th>Answer1</th>
+      <th>Answer2</th>
+      <th>Answer3</th>
+      <th>Answer1correct</th>
+      <th>Answer2correct</th>
+      <th>Answer3correct</th>
+      <th>Explanation</th>
+      <th>Linkurl</th>
+      <th>Linkname</th>
+      <th>User</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @questions.each do |question| %>
+      <tr>
+        <td><%= question.course %></td>
+        <td><%= question.question %></td>
+        <td><%= question.answer1 %></td>
+        <td><%= question.answer2 %></td>
+        <td><%= question.answer3 %></td>
+        <td><%= question.answer1correct %></td>
+        <td><%= question.answer2correct %></td>
+        <td><%= question.answer3correct %></td>
+        <td><%= question.explanation %></td>
+        <td><%= question.linkurl %></td>
+        <td><%= question.linkname %></td>
+        <td><%= question.user %></td>
+        <td><%= link_to 'Show', question %></td>
+        <td><%= link_to 'Edit', edit_question_path(question) %></td>
+        <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Question', new_question_path %>

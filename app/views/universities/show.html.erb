@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @university.name %>
+</p>
+
+<p>
+  <b>Subjects:</b>
+  <br/>
+  <br/>
+   
+  <% @university.subjects.each do |subject| %>
+    Group: <%= link_to subject.name, subject_path(subject) %><br/>
+  <% end %>
+  <br/>
+  <%= link_to "Create new subject", new_university_subject_path(@university)%> 
+</p>
+
+<%= link_to 'Edit', edit_university_path(@university) %> |
+<%= link_to 'Back', universities_path %>

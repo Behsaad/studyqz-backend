@@ -1,0 +1,37 @@
+<h1>Listing users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Facebookid</th>
+      <th>Boosts</th>
+      <th>Jokers</th>
+      <th>Xp</th>
+      <th>University</th>
+      <th>Subject</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.facebookid %></td>
+        <td><%= user.boosts %></td>
+        <td><%= user.jokers %></td>
+        <td><%= user.xp %></td>
+        <td><%= user.university %></td>
+        <td><%= user.subject %></td>
+        <td><%= link_to 'Show', user %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User', new_user_path %>

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Facebookid:</strong>
+  <%= @user.facebookid %>
+</p>
+
+<p>
+  <strong>Boosts:</strong>
+  <%= @user.boosts %>
+</p>
+
+<p>
+  <strong>Jokers:</strong>
+  <%= @user.jokers %>
+</p>
+
+<p>
+  <strong>Xp:</strong>
+  <%= @user.xp %>
+</p>
+
+<p>
+  <strong>University:</strong>
+  <%= @user.university %>
+</p>
+
+<p>
+  <strong>Subject:</strong>
+  <%= @user.subject %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

@@ -1,0 +1,1 @@
+json.extract! @question, :id, :course_id, :question, :answer1, :answer2, :answer3, :answer1correct, :answer2correct, :answer3correct, :explanation, :linkurl, :linkname, :user_id, :created_at, :updated_at
