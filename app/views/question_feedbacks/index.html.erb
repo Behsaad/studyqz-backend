@@ -1,0 +1,32 @@
+<h1>Listing question_feedbacks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Question</th>
+      <th>Message</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @question_feedbacks.each do |question_feedback| %>
+      <tr>
+        <td><%= question_feedback.user.facebookid %></td>
+        <td><%= question_feedback.question.question %></td>
+        <td><%= question_feedback.message %></td>
+        <td><%= link_to 'Show', question_feedback %></td>
+        <td><%= link_to 'Edit', edit_question_feedback_path(question_feedback) %></td>
+        <td><%= link_to 'Destroy', question_feedback, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Back to question', question_path(@question) %>
+<%= link_to 'New Question Feedback', new_question_question_feedback_path(@question) %>

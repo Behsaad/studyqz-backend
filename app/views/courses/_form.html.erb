@@ -1,4 +1,5 @@
-<%= form_for(@course) do |f| %>
+
+<%= form_for @path do |f| %>
   <% if @course.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
@@ -24,13 +25,11 @@
     <%= f.number_field :semester %>
   </div>
   <div class="field">
-    <%= f.label :subject_id %><br>
-    <%= f.text_field :subject_id %>
-  </div>
-  <div class="field">
     <%= f.label :university_id %><br>
     <%= f.text_field :university_id %>
   </div>
+  <p><%= @user.university.name %> id: <%= @user.university.id %></p>
+
   <div class="field">
     <%= f.label :user_id %><br>
     <%= f.text_field :user_id %>
@@ -38,4 +37,6 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+
+
 <% end %>

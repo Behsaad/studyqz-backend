@@ -1,3 +1,4 @@
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -17,18 +18,34 @@
 
 <p>
   <strong>Subject:</strong>
-  <%= @course.subject %>
+  <%= @course.subject.name %>
 </p>
 
 <p>
   <strong>University:</strong>
-  <%= @course.university %>
+  <%= @course.university.name %>
 </p>
 
 <p>
   <strong>User:</strong>
-  <%= @course.user %>
+  <%= @course.user.facebookid %>
+</p>
+
+<p>
+  <%= link_to "#{@course.questions.count} Questions", course_questions_path(@course)%> 
+</p>
+
+<p>
+  <%= link_to "#{@course.course_students.count} Course Students", course_course_students_path(@course)%> 
+</p>
+
+<p>
+  <%= link_to "#{@course.course_tutors.count} Course Tutors", course_course_tutors_path(@course)%> 
+</p>
+
+<p>
+  <%= link_to "#{@course.course_invitations.count} Course Invitations", course_course_invitations_path(@course)%> 
 </p>
 
 <%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+<%= link_to 'Back', user_courses_path(@user) %>

@@ -1,6 +1,6 @@
 class SubjectsController < ApplicationController
   before_action :set_subject, only: [:show, :edit, :update, :destroy]
-  before_filter :load_university, except: [:index]
+  before_filter :load_university
   # GET /subjects
   # GET /subjects.json
   def index
@@ -20,19 +20,19 @@ class SubjectsController < ApplicationController
 
   # GET /subjects/1/edit
   def edit
+    @path = @subject
   end
 
   # POST /subjects
   # POST /subjects.json
   def create
-    @subject = @university.subjects.build(subject_params)
+    @subject = Subject.new(subject_params)
 
     respond_to do |format|
       if @subject.save
         format.html { redirect_to @subject, notice: 'Subject was successfully created.' }
         format.json { render action: 'show', status: :created, location: @subject }
       else
-        @path = [@university, @subject] 
         format.html { render action: 'new' }
         format.json { render json: @subject.errors, status: :unprocessable_entity }
       end
@@ -59,7 +59,7 @@ class SubjectsController < ApplicationController
   def destroy
     @subject.destroy
     respond_to do |format|
-      format.html { redirect_to subjects_url }
+      format.html { redirect_to university_subjects_path(@university) }
       format.json { head :no_content }
     end
   end

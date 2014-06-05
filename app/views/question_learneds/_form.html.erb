@@ -1,0 +1,30 @@
+<%= form_for @path do |f| %>
+  <% if @question_learned.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@question_learned.errors.count, "error") %> prohibited this question_learned from being saved:</h2>
+
+      <ul>
+      <% @question_learned.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.text_field :user_id %>
+  </div>
+
+   <% @question.course.course_students.each do |course_student| %>
+        <p>FacebookId:<%= course_student.user.facebookid %> id:<%= course_student.user.id %></p>
+   <% end %>
+
+  <div class="field">
+    <%= f.label :question_id %><br>
+    <%= f.text_field :question_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

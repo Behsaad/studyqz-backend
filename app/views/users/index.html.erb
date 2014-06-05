@@ -16,14 +16,14 @@
   </thead>
 
   <tbody>
-    <% @users.each do |user| %>
+    <% @subject.users.each do |user| %>
       <tr>
         <td><%= user.facebookid %></td>
         <td><%= user.boosts %></td>
         <td><%= user.jokers %></td>
         <td><%= user.xp %></td>
-        <td><%= user.university %></td>
-        <td><%= user.subject %></td>
+        <td><%= user.university.name %></td>
+        <td><%= user.subject.name %></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -34,4 +34,6 @@
 
 <br>
 
-<%= link_to 'New User', new_user_path %>
+<%= link_to 'Back to subject', subject_path(@subject) %>
+<%= link_to 'New User', new_subject_user_path(@subject) %>
+

@@ -11,10 +11,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140604163154) do
+ActiveRecord::Schema.define(version: 20140605164547) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "course_invitations", force: true do |t|
+    t.integer  "invitedbyuser_id"
+    t.integer  "inviteduser_id"
+    t.integer  "course_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "course_invitations", ["course_id"], name: "index_course_invitations_on_course_id", using: :btree
+  add_index "course_invitations", ["invitedbyuser_id"], name: "index_course_invitations_on_invitedbyuser_id", using: :btree
+  add_index "course_invitations", ["inviteduser_id"], name: "index_course_invitations_on_inviteduser_id", using: :btree
+
+  create_table "course_students", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "course_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "course_students", ["course_id"], name: "index_course_students_on_course_id", using: :btree
+  add_index "course_students", ["user_id"], name: "index_course_students_on_user_id", using: :btree
+
+  create_table "course_tutors", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "course_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "course_tutors", ["course_id"], name: "index_course_tutors_on_course_id", using: :btree
+  add_index "course_tutors", ["user_id"], name: "index_course_tutors_on_user_id", using: :btree
 
   create_table "courses", force: true do |t|
     t.string   "name"
@@ -30,6 +62,47 @@ ActiveRecord::Schema.define(version: 20140604163154) do
   add_index "courses", ["subject_id"], name: "index_courses_on_subject_id", using: :btree
   add_index "courses", ["university_id"], name: "index_courses_on_university_id", using: :btree
   add_index "courses", ["user_id"], name: "index_courses_on_user_id", using: :btree
+
+  create_table "question_dislikes", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "question_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "question_dislikes", ["question_id"], name: "index_question_dislikes_on_question_id", using: :btree
+  add_index "question_dislikes", ["user_id"], name: "index_question_dislikes_on_user_id", using: :btree
+
+  create_table "question_feedbacks", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "question_id"
+    t.string   "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "question_feedbacks", ["question_id"], name: "index_question_feedbacks_on_question_id", using: :btree
+  add_index "question_feedbacks", ["user_id"], name: "index_question_feedbacks_on_user_id", using: :btree
+
+  create_table "question_learneds", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "question_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "question_learneds", ["question_id"], name: "index_question_learneds_on_question_id", using: :btree
+  add_index "question_learneds", ["user_id"], name: "index_question_learneds_on_user_id", using: :btree
+
+  create_table "question_likes", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "question_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "question_likes", ["question_id"], name: "index_question_likes_on_question_id", using: :btree
+  add_index "question_likes", ["user_id"], name: "index_question_likes_on_user_id", using: :btree
 
   create_table "questions", force: true do |t|
     t.integer  "course_id"

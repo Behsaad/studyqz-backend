@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Invitedbyuser:</strong>
+  <%= @course_invitation.invitedbyuser.facebookid %>
+</p>
+
+<p>
+  <strong>Inviteduser:</strong>
+  <%= @course_invitation.inviteduser.facebook %>
+</p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @course_invitation.course.name %>
+</p>
+
+<%= link_to 'Edit', edit_course_invitation_path(@course_invitation) %> |
+<%= link_to 'Back', course_course_invitations_path(@course) %>

@@ -1,0 +1,30 @@
+<h1>Listing question_dislikes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Question</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @question_dislikes.each do |question_dislike| %>
+      <tr>
+        <td><%= question_dislike.user.facebookid %></td>
+        <td><%= question_dislike.question.question %></td>
+        <td><%= link_to 'Show', question_dislike %></td>
+        <td><%= link_to 'Edit', edit_question_dislike_path(question_dislike) %></td>
+        <td><%= link_to 'Destroy', question_dislike, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Back to question', question_path(@question) %>
+<%= link_to 'New Question Dislike', new_question_question_dislike_path(@question) %>

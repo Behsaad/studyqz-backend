@@ -10,5 +10,9 @@
   <%= @subject.university.name %>
 </p>
 
+<p>
+  <%= link_to "#{@subject.users.count} Users", subject_users_path(@subject)%> 
+</p>
+
 <%= link_to 'Edit', edit_subject_path(@subject) %> |
-<%= link_to 'Back', university_path(@university) %>
+<%= link_to 'Back', university_subjects_path(@university) %>

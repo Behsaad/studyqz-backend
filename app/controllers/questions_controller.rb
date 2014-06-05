@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
-
+  before_filter :load_course
   # GET /questions
   # GET /questions.json
   def index
@@ -14,17 +14,21 @@ class QuestionsController < ApplicationController
 
   # GET /questions/new
   def new
-    @question = Question.new
+    @question = @course.questions.build
+    @path= [@course, @question]
   end
 
   # GET /questions/1/edit
   def edit
+    @path=@course
   end
 
   # POST /questions
   # POST /questions.json
   def create
     @question = Question.new(question_params)
+
+    @question.user=@course.user
 
     respond_to do |format|
       if @question.save
@@ -56,7 +60,7 @@ class QuestionsController < ApplicationController
   def destroy
     @question.destroy
     respond_to do |format|
-      format.html { redirect_to questions_url }
+      format.html { redirect_to course_questions_path }
       format.json { head :no_content }
     end
   end
@@ -71,4 +75,13 @@ class QuestionsController < ApplicationController
     def question_params
       params.require(:question).permit(:course_id, :question, :answer1, :answer2, :answer3, :answer1correct, :answer2correct, :answer3correct, :explanation, :linkurl, :linkname, :user_id)
     end
+
+    def load_course
+     if params[:course_id].nil?
+      @course=@question.course
+     else
+      @course = Course.find(params[:course_id])
+     end
+    end
+
 end

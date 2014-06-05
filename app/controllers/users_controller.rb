@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-
+  before_filter :load_subject
   # GET /users
   # GET /users.json
   def index
@@ -14,11 +14,13 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    @user = User.new
+    @user = @subject.users.build
+    @path= [@subject, @user]
   end
 
   # GET /users/1/edit
   def edit
+    @path=@user
   end
 
   # POST /users
@@ -26,11 +28,14 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
+    @user.university=@subject.university;
+
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render action: 'show', status: :created, location: @user }
       else
+        @path = [@subject, @user] 
         format.html { render action: 'new' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
@@ -56,7 +61,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url }
+      format.html { redirect_to subject_users_path(@subject) }
       format.json { head :no_content }
     end
   end
@@ -71,4 +76,18 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:facebookid, :boosts, :jokers, :xp, :university_id, :subject_id)
     end
+
+
+    def load_subject
+
+     if params[:subject_id].nil?
+      @subject=@user.subject
+     else
+      @subject = Subject.find(params[:subject_id])
+     end
+
+
+
+    end
+
 end

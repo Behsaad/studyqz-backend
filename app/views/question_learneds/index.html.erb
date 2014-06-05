@@ -1,0 +1,30 @@
+<h1>Listing question_learneds</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Question</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @question_learneds.each do |question_learned| %>
+      <tr>
+        <td><%= question_learned.user.facebookid %></td>
+        <td><%= question_learned.question.question %></td>
+        <td><%= link_to 'Show', question_learned %></td>
+        <td><%= link_to 'Edit', edit_question_learned_path(question_learned) %></td>
+        <td><%= link_to 'Destroy', question_learned, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Back to question', question_path(@question) %>
+<%= link_to 'New Question Learned', new_question_question_learned_path(@question) %>

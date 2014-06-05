@@ -2,7 +2,7 @@
 
 <p>
   <strong>Course:</strong>
-  <%= @question.course %>
+  <%= @question.course.name %>
 </p>
 
 <p>
@@ -57,8 +57,24 @@
 
 <p>
   <strong>User:</strong>
-  <%= @question.user %>
+  <%= @question.user.facebookid %>
+</p>
+
+<p>
+  <%= link_to "#{@question.question_likes.count} Question Likes", question_question_likes_path(@question)%> 
+</p>
+
+<p>
+  <%= link_to "#{@question.question_dislikes.count} Question dislikes", question_question_dislikes_path(@question)%> 
+</p>
+
+<p>
+  <%= link_to "#{@question.question_learneds.count} Question learneds", question_question_learneds_path(@question)%> 
+</p>
+
+<p>
+  <%= link_to "#{@question.question_feedbacks.count} Question feedbacks", question_question_feedbacks_path(@question)%> 
 </p>
 
 <%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Back', questions_path %>
+<%= link_to 'Back', course_questions_path(@course) %>

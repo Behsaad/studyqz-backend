@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @question_dislike.user.facebookid %>
+</p>
+
+<p>
+  <strong>Question:</strong>
+  <%= @question_dislike.question.question %>
+</p>
+
+<%= link_to 'Edit', edit_question_dislike_path(@question) %> |
+<%= link_to 'Back', question_question_dislikes_path(@question) %> 

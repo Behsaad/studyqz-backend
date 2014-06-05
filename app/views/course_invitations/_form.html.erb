@@ -1,0 +1,34 @@
+<%= form_for @path do |f| %>
+  <% if @course_invitation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@course_invitation.errors.count, "error") %> prohibited this course_invitation from being saved:</h2>
+
+      <ul>
+      <% @course_invitation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :invitedbyuser_id %><br>
+    <%= f.text_field :invitedbyuser_id %>
+  </div>
+  <div class="field">
+    <%= f.label :inviteduser_id %><br>
+    <%= f.text_field :inviteduser_id %>
+  </div>
+
+  <% @course.subject.users.each do |user| %>
+        <p>FacebookId:<%= user.facebookid %> id:<%= user.id %></p>
+   <% end %>
+
+  <div class="field">
+    <%= f.label :course_id %><br>
+    <%= f.text_field :course_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

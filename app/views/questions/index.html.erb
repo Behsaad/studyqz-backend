@@ -24,7 +24,7 @@
   <tbody>
     <% @questions.each do |question| %>
       <tr>
-        <td><%= question.course %></td>
+        <td><%= question.course.name %></td>
         <td><%= question.question %></td>
         <td><%= question.answer1 %></td>
         <td><%= question.answer2 %></td>
@@ -35,7 +35,7 @@
         <td><%= question.explanation %></td>
         <td><%= question.linkurl %></td>
         <td><%= question.linkname %></td>
-        <td><%= question.user %></td>
+        <td><%= question.user.facebookid %></td>
         <td><%= link_to 'Show', question %></td>
         <td><%= link_to 'Edit', edit_question_path(question) %></td>
         <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -46,4 +46,6 @@
 
 <br>
 
-<%= link_to 'New Question', new_question_path %>
+<%= link_to 'Back to course', course_path(@course) %>
+<%= link_to 'New Question', new_course_question_path(@course) %>
+

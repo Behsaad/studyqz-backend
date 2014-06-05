@@ -1,0 +1,30 @@
+<h1>Listing question_likes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Question</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @question_likes.each do |question_like| %>
+      <tr>
+        <td><%= question_like.user.facebookid %></td>
+        <td><%= question_like.question.question %></td>
+        <td><%= link_to 'Show', question_like %></td>
+        <td><%= link_to 'Edit', edit_question_like_path(question_like) %></td>
+        <td><%= link_to 'Destroy', question_like, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Back to question', question_path(@question) %>
+<%= link_to 'New Question Like', new_question_question_like_path(@question) %>

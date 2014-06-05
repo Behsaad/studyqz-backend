@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @question_learned.user.facebookid %>
+</p>
+
+<p>
+  <strong>Question:</strong>
+  <%= @question_learned.question.question %>
+</p>
+
+<%= link_to 'Edit', edit_question_learned_path(@question) %> |
+<%= link_to 'Back', question_question_learneds_path(@question) %> 
