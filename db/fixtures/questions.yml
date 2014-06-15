@@ -1,0 +1,14 @@
+Question(question1):
+  user_id: 1
+  course_id: 1
+  question: "Wie viele Bits hat ein Byte"
+  answer1: "8"
+  answer2: "4"
+  answer3: "2"
+  answer1correct: true
+  answer2correct: false
+  answer3correct: false
+  explanation: "Ein Byte hat 8 Bits"
+  linkurl: "www.google.de/bit"
+  linkname: "google suche"
+  id: 1
