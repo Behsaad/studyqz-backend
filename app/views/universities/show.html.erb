@@ -5,9 +5,5 @@
   <%= @university.name %>
 </p>
 
-<p>
-  <%= link_to "#{@university.subjects.count} Subjects", university_subjects_path(@university)%> 
-</p>
-
 <%= link_to 'Edit', edit_university_path(@university) %> |
 <%= link_to 'Back', universities_path %>

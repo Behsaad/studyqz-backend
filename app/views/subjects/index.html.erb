@@ -4,7 +4,6 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>University</th>
       <th></th>
       <th></th>
       <th></th>
@@ -12,10 +11,9 @@
   </thead>
 
   <tbody>
-    <% @university.subjects.each do |subject| %>
+    <% @subjects.each do |subject| %>
       <tr>
         <td><%= subject.name %></td>
-        <td><%= subject.university.name %></td>
         <td><%= link_to 'Show', subject %></td>
         <td><%= link_to 'Edit', edit_subject_path(subject) %></td>
         <td><%= link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -26,6 +24,4 @@
 
 <br>
 
-
-<%= link_to 'Back to university', university_path(@university) %>
-<%= link_to 'New Subject', new_university_subject_path(@university) %>
+<%= link_to 'New Subject', new_subject_path %>

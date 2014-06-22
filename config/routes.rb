@@ -1,7 +1,6 @@
 StudyqzBackend::Application.routes.draw do
 
-  resources :universities , shallow: true do
-
+   resources :universities
    resources :subjects , shallow: true do
 
     resources :users, shallow: true do
@@ -23,5 +22,5 @@ StudyqzBackend::Application.routes.draw do
     end #courses
    end #users
   end #subjects
- end #universities
+
 end

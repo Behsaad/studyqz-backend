@@ -1,6 +1,5 @@
 class SubjectsController < ApplicationController
   before_action :set_subject, only: [:show, :edit, :update, :destroy]
-  before_filter :load_university
   # GET /subjects
   # GET /subjects.json
   def index
@@ -14,13 +13,11 @@ class SubjectsController < ApplicationController
 
   # GET /subjects/new
   def new
-    @subject = @university.subjects.build
-    @path = [@university, @subject]
+    @subject = Subject.new
   end
 
   # GET /subjects/1/edit
   def edit
-    @path = @subject
   end
 
   # POST /subjects
@@ -59,7 +56,7 @@ class SubjectsController < ApplicationController
   def destroy
     @subject.destroy
     respond_to do |format|
-      format.html { redirect_to university_subjects_path(@university) }
+      format.html { redirect_to subjects_url }
       format.json { head :no_content }
     end
   end
@@ -72,16 +69,6 @@ class SubjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def subject_params
-      params.require(:subject).permit(:name, :university_id)
-    end
-
-    def load_university
-
-     if params[:university_id].nil?
-      @university=@subject.university
-     else
-      @university = University.find(params[:university_id])
-     end
-     
+      params.require(:subject).permit(:name,)
     end
 end

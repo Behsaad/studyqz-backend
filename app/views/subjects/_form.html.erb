@@ -1,4 +1,4 @@
-<%= form_for @path do |f| %>
+<%= form_for @subject do |f| %>
   <% if @subject.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@subject.errors.count, "error") %> prohibited this subject from being saved:</h2>
@@ -15,10 +15,7 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :university_id %><br>
-    <%= f.text_field :university_id %>
-  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
