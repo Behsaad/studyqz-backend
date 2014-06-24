@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140622183156) do
+ActiveRecord::Schema.define(version: 20140622214411) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -136,18 +136,25 @@ ActiveRecord::Schema.define(version: 20140622183156) do
     t.datetime "updated_at"
   end
 
-  create_table "users", force: true do |t|
-    t.string   "facebookid"
-    t.integer  "boosts"
-    t.integer  "jokers"
+  create_table "user_profiles", force: true do |t|
     t.integer  "xp"
     t.integer  "university_id"
     t.integer  "subject_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "users", ["subject_id"], name: "index_users_on_subject_id", using: :btree
-  add_index "users", ["university_id"], name: "index_users_on_university_id", using: :btree
+  add_index "user_profiles", ["subject_id"], name: "index_user_profiles_on_subject_id", using: :btree
+  add_index "user_profiles", ["university_id"], name: "index_user_profiles_on_university_id", using: :btree
+  add_index "user_profiles", ["user_id"], name: "index_user_profiles_on_user_id", using: :btree
+
+  create_table "users", force: true do |t|
+    t.string   "facebookid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "jokers"
+    t.integer  "boosts"
+  end
 
 end

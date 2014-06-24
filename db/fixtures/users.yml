@@ -1,18 +1,12 @@
 
 User(test1):
-  university_id: 1
-  subject_id: 1
   facebookid: "100008387650709"
   boosts: 5
   jokers: 5
-  xp: 200
   id: 1
 
 User(test2):
-  university_id: 1
-  subject_id: 1
   facebookid: "100008355946204"
   boosts: 5
   jokers: 5
-  xp: 200
   id: 2

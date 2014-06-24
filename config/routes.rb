@@ -1,26 +1,24 @@
 StudyqzBackend::Application.routes.draw do
 
+   resources :users, shallow: true
    resources :universities
-   resources :subjects , shallow: true do
+   resources :subjects
+   resources :user_profiles
 
-    resources :users, shallow: true do
+   resources :courses, shallow: true do
 
-     resources :courses, shallow: true do
-
-      resources :course_students
-      resources :course_tutors
-      resources :course_invitations
+    resources :course_students
+    resources :course_tutors
+    resources :course_invitations
       
-      resources :questions, shallow: true do
+    resources :questions, shallow: true do
 
-        resources :question_likes
-        resources :question_dislikes
-        resources :question_learneds
-        resources :question_feedbacks
+     resources :question_likes
+     resources :question_dislikes
+     resources :question_learneds
+     resources :question_feedbacks
 
       end #questions
     end #courses
-   end #users
-  end #subjects
 
 end

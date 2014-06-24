@@ -1,6 +1,5 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
-  before_filter :load_user
   # GET /courses
   # GET /courses.json
   def index
@@ -14,21 +13,17 @@ class CoursesController < ApplicationController
 
   # GET /courses/new
   def new
-    @course = @user.courses.build
-    @path = [@user, @course]
+    @course = Course.new
   end
 
   # GET /courses/1/edit
   def edit
-    @path = @course
   end
 
   # POST /courses
   # POST /courses.json
   def create
     @course = Course.new(course_params)
-
-    @course.subject=@user.subject;
 
     respond_to do |format|
       if @course.save
@@ -60,7 +55,7 @@ class CoursesController < ApplicationController
   def destroy
     @course.destroy
     respond_to do |format|
-      format.html { redirect_to user_courses_path(@user) }
+      format.html { redirect_to courses_path }
       format.json { head :no_content }
     end
   end
@@ -76,13 +71,4 @@ class CoursesController < ApplicationController
       params.require(:course).permit(:name, :lecturer, :semester, :subject_id, :university_id, :user_id)
     end
 
-    def load_user
-
-     if params[:user_id].nil?
-      @user = @course.user
-     else
-      @user = User.find(params[:user_id])
-     end
-
-    end
 end

@@ -1,11 +1,10 @@
-
-<%= form_for(@course) do |f| %>
-  <% if @course.errors.any? %>
+<%= form_for(@user_profile) do |f| %>
+  <% if @user_profile.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
+      <h2><%= pluralize(@user_profile.errors.count, "error") %> prohibited this user_profile from being saved:</h2>
 
       <ul>
-      <% @course.errors.full_messages.each do |msg| %>
+      <% @user_profile.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -13,27 +12,17 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :lecturer %><br>
-    <%= f.text_field :lecturer %>
-  </div>
-  <div class="field">
-    <%= f.label :semester %><br>
-    <%= f.number_field :semester %>
+    <%= f.label :xp %><br>
+    <%= f.number_field :xp %>
   </div>
   <div class="field">
     <%= f.label :university_id %><br>
     <%= f.text_field :university_id %>
   </div>
-  
   <div class="field">
     <%= f.label :subject_id %><br>
     <%= f.text_field :subject_id %>
   </div>
-
   <div class="field">
     <%= f.label :user_id %><br>
     <%= f.text_field :user_id %>
@@ -41,6 +30,4 @@
   <div class="actions">
     <%= f.submit %>
   </div>
-
-
 <% end %>
